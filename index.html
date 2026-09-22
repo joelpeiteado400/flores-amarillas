@@ -244,8 +244,8 @@
        ============================================================== */
     .flower-wrapper {
       position: relative;
-      width: var(--flower-size);
-      height: var(--flower-size);
+      width: min(480px, 90vw);
+      height: min(400px, 75vw);
       margin: 1rem 0 1.5rem;
       display: flex;
       align-items: center;
@@ -693,19 +693,26 @@
       <p class="header-subtle__title">Día de las flores amarillas</p>
     </header>
 
-    <!-- La Flor -->
+    <!-- Ramo de Flores -->
     <div class="flower-wrapper">
       <div class="flower-glow"></div>
 
-      <!-- SVG Flor Amarilla — Diseño original inline -->
-      <svg class="flower-svg" id="flower" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img"
-        aria-label="Flor amarilla digital">
+      <!-- SVG Ramo de 3 Flores Amarillas -->
+      <svg class="flower-svg" id="flower" viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg" role="img"
+        aria-label="Ramo de flores amarillas digitales">
         <defs>
           <!-- Gradientes para los pétalos -->
           <radialGradient id="petalGrad" cx="50%" cy="30%" r="70%">
             <stop offset="0%" stop-color="#ffe566" />
             <stop offset="60%" stop-color="#f5c542" />
             <stop offset="100%" stop-color="#e6a817" />
+          </radialGradient>
+
+          <!-- Pétalos más claros para variedad -->
+          <radialGradient id="petalGrad2" cx="50%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#fff0a0" />
+            <stop offset="60%" stop-color="#fad554" />
+            <stop offset="100%" stop-color="#e8b520" />
           </radialGradient>
 
           <!-- Gradiente centro de la flor -->
@@ -739,67 +746,135 @@
           </filter>
         </defs>
 
-        <!-- Tallo -->
-        <path d="M 200 270 Q 195 340 198 390 Q 200 430 200 480" stroke="url(#stemGrad)" stroke-width="8" fill="none"
-          stroke-linecap="round" />
+        <!-- ======== TALLOS (convergen abajo) ======== -->
+        <!-- Tallo izquierdo -->
+        <path d="M 185 290 Q 220 370 260 430 Q 280 470 295 510" stroke="url(#stemGrad)" stroke-width="6" fill="none" stroke-linecap="round" />
+        <!-- Tallo central -->
+        <path d="M 300 270 Q 298 350 300 420 Q 300 460 300 510" stroke="url(#stemGrad)" stroke-width="8" fill="none" stroke-linecap="round" />
+        <!-- Tallo derecho -->
+        <path d="M 415 300 Q 380 375 340 435 Q 320 470 305 510" stroke="url(#stemGrad)" stroke-width="6" fill="none" stroke-linecap="round" />
 
-        <!-- Hoja izquierda -->
-        <path d="M 198 360 Q 150 340 130 360 Q 140 350 160 370 Q 180 375 198 365" fill="url(#leafGrad)" opacity="0.9" />
+        <!-- ======== HOJAS ======== -->
+        <path d="M 250 400 Q 200 380 180 400 Q 195 390 215 410 Q 235 415 250 405" fill="url(#leafGrad)" opacity="0.9" />
+        <path d="M 310 420 Q 360 400 378 418 Q 365 408 348 423 Q 328 428 310 425" fill="url(#leafGrad)" opacity="0.85" />
+        <path d="M 295 460 Q 255 445 240 462 Q 252 452 268 468 Q 282 472 295 465" fill="url(#leafGrad)" opacity="0.8" />
 
-        <!-- Hoja derecha -->
-        <path d="M 202 390 Q 250 375 268 390 Q 255 380 240 395 Q 220 400 202 395" fill="url(#leafGrad)"
-          opacity="0.85" />
-
-        <!-- Grupo de pétalos (capa trasera) -->
-        <g filter="url(#softShadow)" opacity="0.85">
-          <ellipse cx="200" cy="148" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(22.5, 200, 210)" />
-          <ellipse cx="200" cy="148" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(67.5, 200, 210)" />
-          <ellipse cx="200" cy="148" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(112.5, 200, 210)" />
-          <ellipse cx="200" cy="148" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(157.5, 200, 210)" />
-          <ellipse cx="200" cy="148" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(202.5, 200, 210)" />
-          <ellipse cx="200" cy="148" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(247.5, 200, 210)" />
-          <ellipse cx="200" cy="148" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(292.5, 200, 210)" />
-          <ellipse cx="200" cy="148" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(337.5, 200, 210)" />
+        <!-- ======== FLOR IZQUIERDA (más pequeña, inclinada) ======== -->
+        <g transform="translate(185, 225) scale(0.72) rotate(-12)">
+          <!-- Pétalos traseros -->
+          <g opacity="0.8">
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad2)" transform="rotate(22.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad2)" transform="rotate(67.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad2)" transform="rotate(112.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad2)" transform="rotate(157.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad2)" transform="rotate(202.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad2)" transform="rotate(247.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad2)" transform="rotate(292.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad2)" transform="rotate(337.5, 0, 0)" />
+          </g>
+          <!-- Pétalos frontales -->
+          <g>
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad2)" transform="rotate(0, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad2)" transform="rotate(45, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad2)" transform="rotate(90, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad2)" transform="rotate(135, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad2)" transform="rotate(180, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad2)" transform="rotate(225, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad2)" transform="rotate(270, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad2)" transform="rotate(315, 0, 0)" />
+          </g>
+          <!-- Centro -->
+          <circle cx="0" cy="0" r="30" fill="url(#centerGrad)" />
+          <g fill="#8B6914" opacity="0.5">
+            <circle cx="-6" cy="-6" r="2" />
+            <circle cx="4" cy="-8" r="2" />
+            <circle cx="8" cy="2" r="2" />
+            <circle cx="-4" cy="6" r="2" />
+            <circle cx="4" cy="6" r="1.5" />
+            <circle cx="0" cy="0" r="1.5" />
+          </g>
         </g>
 
-        <!-- Grupo de pétalos (capa frontal) -->
-        <g filter="url(#softShadow)">
-          <ellipse cx="200" cy="145" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(0, 200, 210)" />
-          <ellipse cx="200" cy="145" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(45, 200, 210)" />
-          <ellipse cx="200" cy="145" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(90, 200, 210)" />
-          <ellipse cx="200" cy="145" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(135, 200, 210)" />
-          <ellipse cx="200" cy="145" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(180, 200, 210)" />
-          <ellipse cx="200" cy="145" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(225, 200, 210)" />
-          <ellipse cx="200" cy="145" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(270, 200, 210)" />
-          <ellipse cx="200" cy="145" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(315, 200, 210)" />
+        <!-- ======== FLOR CENTRAL (la principal, más grande) ======== -->
+        <g transform="translate(300, 210)">
+          <!-- Pétalos traseros -->
+          <g filter="url(#softShadow)" opacity="0.85">
+            <ellipse cx="0" cy="-62" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(22.5, 0, 0)" />
+            <ellipse cx="0" cy="-62" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(67.5, 0, 0)" />
+            <ellipse cx="0" cy="-62" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(112.5, 0, 0)" />
+            <ellipse cx="0" cy="-62" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(157.5, 0, 0)" />
+            <ellipse cx="0" cy="-62" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(202.5, 0, 0)" />
+            <ellipse cx="0" cy="-62" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(247.5, 0, 0)" />
+            <ellipse cx="0" cy="-62" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(292.5, 0, 0)" />
+            <ellipse cx="0" cy="-62" rx="22" ry="50" fill="url(#petalGrad)" transform="rotate(337.5, 0, 0)" />
+          </g>
+          <!-- Pétalos frontales -->
+          <g filter="url(#softShadow)">
+            <ellipse cx="0" cy="-65" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(0, 0, 0)" />
+            <ellipse cx="0" cy="-65" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(45, 0, 0)" />
+            <ellipse cx="0" cy="-65" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(90, 0, 0)" />
+            <ellipse cx="0" cy="-65" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(135, 0, 0)" />
+            <ellipse cx="0" cy="-65" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(180, 0, 0)" />
+            <ellipse cx="0" cy="-65" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(225, 0, 0)" />
+            <ellipse cx="0" cy="-65" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(270, 0, 0)" />
+            <ellipse cx="0" cy="-65" rx="25" ry="55" fill="url(#petalGrad)" transform="rotate(315, 0, 0)" />
+          </g>
+          <!-- Centro -->
+          <circle cx="0" cy="0" r="38" fill="url(#centerGrad)" />
+          <g fill="#8B6914" opacity="0.6">
+            <circle cx="-10" cy="-10" r="2.5" />
+            <circle cx="0" cy="-15" r="2.5" />
+            <circle cx="10" cy="-10" r="2.5" />
+            <circle cx="-5" cy="0" r="2.5" />
+            <circle cx="5" cy="0" r="2.5" />
+            <circle cx="0" cy="10" r="2.5" />
+            <circle cx="-15" cy="0" r="2" />
+            <circle cx="15" cy="0" r="2" />
+            <circle cx="0" cy="-5" r="2" />
+            <circle cx="-10" cy="8" r="2" />
+            <circle cx="10" cy="8" r="2" />
+            <circle cx="10" cy="-14" r="2" />
+            <circle cx="-10" cy="-14" r="2" />
+          </g>
+          <circle cx="-8" cy="-10" r="12" fill="white" opacity="0.08" />
         </g>
 
-        <!-- Centro de la flor -->
-        <circle cx="200" cy="210" r="38" fill="url(#centerGrad)" />
-
-        <!-- Textura del centro (semillas) -->
-        <g fill="#8B6914" opacity="0.6">
-          <circle cx="190" cy="200" r="2.5" />
-          <circle cx="200" cy="195" r="2.5" />
-          <circle cx="210" cy="200" r="2.5" />
-          <circle cx="195" cy="210" r="2.5" />
-          <circle cx="205" cy="210" r="2.5" />
-          <circle cx="200" cy="220" r="2.5" />
-          <circle cx="185" cy="210" r="2" />
-          <circle cx="215" cy="210" r="2" />
-          <circle cx="200" cy="205" r="2" />
-          <circle cx="190" cy="218" r="2" />
-          <circle cx="210" cy="218" r="2" />
-          <circle cx="210" cy="196" r="2" />
-          <circle cx="190" cy="196" r="2" />
-          <circle cx="182" cy="204" r="1.5" />
-          <circle cx="218" cy="204" r="1.5" />
-          <circle cx="196" cy="225" r="1.5" />
-          <circle cx="204" cy="225" r="1.5" />
+        <!-- ======== FLOR DERECHA (más pequeña, inclinada) ======== -->
+        <g transform="translate(415, 235) scale(0.68) rotate(15)">
+          <!-- Pétalos traseros -->
+          <g opacity="0.8">
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad)" transform="rotate(22.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad)" transform="rotate(67.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad)" transform="rotate(112.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad)" transform="rotate(157.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad)" transform="rotate(202.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad)" transform="rotate(247.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad)" transform="rotate(292.5, 0, 0)" />
+            <ellipse cx="0" cy="-52" rx="18" ry="40" fill="url(#petalGrad)" transform="rotate(337.5, 0, 0)" />
+          </g>
+          <!-- Pétalos frontales -->
+          <g>
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad)" transform="rotate(0, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad)" transform="rotate(45, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad)" transform="rotate(90, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad)" transform="rotate(135, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad)" transform="rotate(180, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad)" transform="rotate(225, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad)" transform="rotate(270, 0, 0)" />
+            <ellipse cx="0" cy="-55" rx="20" ry="44" fill="url(#petalGrad)" transform="rotate(315, 0, 0)" />
+          </g>
+          <!-- Centro -->
+          <circle cx="0" cy="0" r="30" fill="url(#centerGrad)" />
+          <g fill="#8B6914" opacity="0.5">
+            <circle cx="-6" cy="-6" r="2" />
+            <circle cx="4" cy="-8" r="2" />
+            <circle cx="8" cy="2" r="2" />
+            <circle cx="-4" cy="6" r="2" />
+            <circle cx="4" cy="6" r="1.5" />
+            <circle cx="0" cy="0" r="1.5" />
+          </g>
         </g>
 
-        <!-- Brillo sutil en el centro -->
-        <circle cx="192" cy="200" r="12" fill="white" opacity="0.08" />
       </svg>
     </div>
 
